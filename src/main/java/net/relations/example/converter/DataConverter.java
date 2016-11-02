@@ -37,8 +37,9 @@ public class DataConverter {
     }
 
     public static CompanyDto fromCompany(Company company) {
-        return (company!=null)?mapper.map(company,CompanyDto.class):null;
+        return (company != null) ? mapper.map(company, CompanyDto.class) : null;
     }
+
     public static CompanyDto fromCompanyAfterSaving(Company company) {
         if (company != null) {
             Set<User> users = (company.getUsers() != null && !company.getUsers().isEmpty()) ? company.getUsers().stream().map(user -> {
@@ -71,24 +72,5 @@ public class DataConverter {
             return mapper.map(company, CompanyDto.class);
         }).collect(Collectors.toList()) : null;
     }
-
-//    public static Set<UserDto> fromUserSet(List<User> users) {
-//        return (users != null && !users.isEmpty()) ? users.stream().map(user -> {
-//            user.setCompany(null);
-//            return mapper.map(user, UserDto.class);
-//        }).collect(Collectors.toSet()) : null;
-//    }
-//
-//
-//    public static Set<CompanyDto> fromCompanySet(List<Company> companies) {
-//        return (companies != null && !companies.isEmpty()) ? companies.stream().map(company -> {
-//            company.getUsers().stream().map(user -> {
-//                user.setCompany(null);
-//                return user;
-//            }).collect(Collectors.toList());
-//            return mapper.map(company, CompanyDto.class);
-//        }).collect(Collectors.toSet()) : null;
-//    }
-
 
 }
